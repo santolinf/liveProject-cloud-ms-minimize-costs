@@ -142,6 +142,7 @@ Optionally you can use [**Postman**](https://www.postman.com/) or [**Insomia**](
 ## Considerations
 
 To run all the microservices in the same machine, you need to consider that the following ports need to be available to use it:
+
 | Name                    | Application   | Database    |
 | -----------             | -----------   | ----------- |
 | api-clusters            | 4070          | 6079        |

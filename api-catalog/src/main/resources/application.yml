@@ -1,6 +1,6 @@
 management:
   health.db.enabled: false
-  endpoints:    
+  endpoints:
     web:
       base-path: /
       exposure:
@@ -23,14 +23,14 @@ chaos:
       restController: true
     assaults:
       exceptionsActive: true
-      latencyActive: true   
+      latencyActive: true
       latencyRangeStart: 10
-      latencyRangeEnd: 5000  
-      
+      latencyRangeEnd: 5000
+
 spring:
   profiles:
     active: default
-       
+
   flyway:
     locations: classpath:db/migration
     sql-migration-prefix: V
@@ -38,17 +38,15 @@ spring:
     sql-migration-separator: __
     sql-migration-suffixes: .sql
   datasource:
-    url: "jdbc:mysql://localhost:3310/flights_catalog?autoReconnect=true"
-    username: root
-    password: muppet
-    driverClassName: com.mysql.cj.jdbc.Driver
-    validation-query: select 1;
-    maxActive: 100
+    url: "jdbc:postgresql://localhost:5432/flights_catalog"
+    username: postgres
+    password: password
+    validation-query: select 1
   jpa:
     show-sql: false
-    generate-ddl: false    
-    properties:    
+    generate-ddl: false
+    properties:
       hibernate:
-        ejb.naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy                
-        dialect: org.hibernate.dialect.MySQLDialect
+        ejb.naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         hbm2ddl.auto: validate
