@@ -142,13 +142,18 @@ Optionally you can use [**Postman**](https://www.postman.com/) or [**Insomia**](
 ## Considerations
 
 To run all the microservices in the same machine, you need to consider that the following ports need to be available to use it:
-| Name                    | Application   | Database    |
-| -----------             | -----------   | ----------- |
-| api-clusters            | 4070          | 6079        |
-| api-pricing             | 5070          | 3010        |
-| api-catalog             | 6070          | 3011        |
-| api-itineraries-search  | 7070          | ---         |
-| api-provider-alpha      | 8070          | ---         |
-| api-provider-beta       | 9070          | ---         |
+
+| Name                    | Application   | Database <sup>*</sup> |
+| -----------             | -----------   |-----------------------|
+| api-clusters            | 4070          | 6079                  |
+| api-pricing             | 5070          | 5432 <sup>**</sup>    |
+| api-catalog             | 6070          | 5432 <sup>**</sup>    |
+| api-itineraries-search  | 7070          | ---                   |
+| api-provider-alpha      | 8070          | ---                   |
+| api-provider-beta       | 9070          | ---                   |
+
+> **<sup>\*</sup>** PostgreSQL database is used instead of MySQL
+> 
+> **<sup>\*\*</sup>** one PostgreSQL server instance is used to host separate databases, hence the same database port number
 
 Take into consideration that the port of the databases is only necessary when you run all the microservices in your IDE and use **docker-compose-infrastructure.yml** to run the databases. If you run all microservices using **docker-compose.yml**, you only check the ports of the **Application** column.
