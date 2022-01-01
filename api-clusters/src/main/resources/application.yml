@@ -1,6 +1,6 @@
 management:
   health.db.enabled: false
-  endpoints:    
+  endpoints:
     web:
       base-path: /
       exposure:
@@ -23,18 +23,22 @@ chaos:
       restController: true
     assaults:
       exceptionsActive: true
-      latencyActive: true   
+      latencyActive: true
       latencyRangeStart: 10
-      latencyRangeEnd: 5000  
-      
+      latencyRangeEnd: 5000
+
 spring:
   profiles:
     active: default
-    
+
+  cache:
+    caffeine:
+      spec: maximumSize=200,expireAfterWrite=300s
+
 redis:
    host: localhost
    port: 6079
-    
+
 connector:
    catalog:
       host: localhost:6070
@@ -45,9 +49,9 @@ connector:
       host: localhost:5070
       responseTimeout: 10000
       connectionTimeout: 10000
-      readTimeout: 10000   
+      readTimeout: 10000
    itineraries-search:
       host: localhost:7070
       responseTimeout: 10000
       connectionTimeout: 10000
-      readTimeout: 10000         
+      readTimeout: 10000
