@@ -143,17 +143,19 @@ Optionally you can use [**Postman**](https://www.postman.com/) or [**Insomia**](
 
 To run all the microservices in the same machine, you need to consider that the following ports need to be available to use it:
 
-| Name                    | Application   | Database <sup>*</sup> |
-| -----------             | -----------   |-----------------------|
-| api-clusters            | 4070          | 6079                  |
-| api-pricing             | 5070          | 5432 <sup>**</sup>    |
-| api-catalog             | 6070          | 5432 <sup>**</sup>    |
-| api-itineraries-search  | 7070          | ---                   |
-| api-provider-alpha      | 8070          | ---                   |
-| api-provider-beta       | 9070          | ---                   |
+| Name                    | Application   | Http proxy             | Database <sup>*</sup> |
+| -----------             | -----------   |------------------------|-----------------------|
+| api-clusters            | 4070          | ---                    | 6079                  |
+| api-pricing             | 5070          | ---                    | 5432 <sup>**</sup>    |
+| api-catalog             | 6070          | 6078 <sup>&#134;</sup> | 5432 <sup>**</sup>    |
+| api-itineraries-search  | 7070          | ---                    | ---                   |
+| api-provider-alpha      | 8070          | ---                    | ---                   |
+| api-provider-beta       | 9070          | ---                    | ---                   |
 
 > **<sup>\*</sup>** PostgreSQL database is used instead of MySQL
 > 
 > **<sup>\*\*</sup>** one PostgreSQL server instance is used to host separate databases, hence the same database port number
+> 
+> **<sup>&#134;</sup>** Varnish - caching HTTP reverse proxy
 
 Take into consideration that the port of the databases is only necessary when you run all the microservices in your IDE and use **docker-compose-infrastructure.yml** to run the databases. If you run all microservices using **docker-compose.yml**, you only check the ports of the **Application** column.
