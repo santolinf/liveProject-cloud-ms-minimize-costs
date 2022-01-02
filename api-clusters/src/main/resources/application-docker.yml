@@ -32,12 +32,12 @@ spring:
     active: default
 
   cache:
-    caffeine:
-      spec: maximumSize=200,expireAfterWrite=300s
+    redis:
+      time-to-live: 300s  # 5 minutes
 
-redis:
-   host: api-clusters-db
-   port: 6379
+  redis:
+    host: api-clusters-remote-cache
+    port: 6079
 
 connector:
    catalog:
