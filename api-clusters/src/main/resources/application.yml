@@ -32,12 +32,12 @@ spring:
     active: default
 
   cache:
-    caffeine:
-      spec: maximumSize=200,expireAfterWrite=300s
+    redis:
+      time-to-live: 300s  # 5 minutes
 
-redis:
-   host: localhost
-   port: 6079
+  redis:
+    host: localhost
+    port: 6079
 
 connector:
    catalog:

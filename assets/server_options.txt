@@ -1,0 +1,3 @@
+-Dspring.redis.host=kubeserver
+-Dspring.redis.port=32565
+-Dconnector.catalog.host=kubeserver:31723

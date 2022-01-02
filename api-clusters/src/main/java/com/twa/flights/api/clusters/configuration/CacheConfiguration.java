@@ -1,7 +1,9 @@
-package com.twa.flights.api.provider.alpha.configuration;
+package com.twa.flights.api.clusters.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.twa.flights.api.provider.alpha.serializer.CitySerializer;
+import com.twa.flights.api.clusters.dto.ClusterSearchDTO;
+import com.twa.flights.api.clusters.serializer.CitySerializer;
+import com.twa.flights.api.clusters.serializer.ClusterSearchSerializer;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +12,7 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -50,5 +53,13 @@ public class CacheConfiguration {
             RedisConnectionFactory redisConnectionFactory) {
         return RedisCacheManager.builder().cacheDefaults(redisCacheConfiguration).initialCacheNames(CACHE_NAMES)
                 .cacheWriter(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory)).build();
+    }
+
+    @Bean
+    public RedisTemplate<String, ClusterSearchDTO> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<String, ClusterSearchDTO> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        redisTemplate.setValueSerializer(new ClusterSearchSerializer(objectMapper));
+        return redisTemplate;
     }
 }

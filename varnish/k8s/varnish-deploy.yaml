@@ -17,4 +17,4 @@ spec:
           image: localhost:32000/twa-varnish:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 80
