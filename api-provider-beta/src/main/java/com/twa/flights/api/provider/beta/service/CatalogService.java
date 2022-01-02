@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.twa.flights.api.provider.beta.connector.CatalogConnector;
 import com.twa.flights.api.provider.beta.dto.CityDTO;
 
+import static com.twa.flights.api.provider.beta.configuration.CacheConfiguration.CATALOG_CITY;
+
 @Service
 public class CatalogService {
 
@@ -21,7 +23,7 @@ public class CatalogService {
         this.catalogConnector = catalogConnector;
     }
 
-    @Cacheable("city")
+    @Cacheable(CATALOG_CITY)
     public CityDTO getCity(String code) {
         LOGGER.debug("Obtain the information for code: {}", code);
         return catalogConnector.getCityByCode(code);
