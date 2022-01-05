@@ -11,6 +11,9 @@ server:
   servlet:
     context-path: /api/flights/pricing
 
+  compression:
+    enabled: true
+
 jetty:
   threadPool:
     maxThreads: 10

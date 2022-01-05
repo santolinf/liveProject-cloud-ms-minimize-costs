@@ -11,6 +11,9 @@ server:
   servlet:
     context-path: /api/flights/provider/beta
 
+  compression:
+    enabled: true
+
 jetty:
   threadPool:
     maxThreads: 10
