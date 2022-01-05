@@ -34,7 +34,7 @@ public class ProviderController implements ProviderResources {
 
     @Override
     public ResponseEntity<List<ItineraryDTO>> availability(AvailabilityRequestDTO request) {
-        LOGGER.debug("Obtain all the itineraries form provider beta");
+        LOGGER.debug("Obtain all the itineraries from provider alpha");
 
         requestValidator.validate(request);
 
