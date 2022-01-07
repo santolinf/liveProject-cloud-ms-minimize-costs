@@ -23,6 +23,7 @@ Make sure that on the remote server we run the following command:
 ssh $KUBE_SERVER docker push localhost:32000/twa-varnish
 ```
 
+### Create Kubernetes Objects
 Use Kubernetes deployment resource to deploy the service.
 
 ```shell
@@ -35,6 +36,18 @@ To access the service from outside the Kubernetes cluster, expose the service th
 
 ```shell
 kubectl apply -f ./varnish-svc-np.yaml
+```
+
+### Restart Deployment after new (Docker) Image Build
+
+```shell
+kubectl scale deployment varnish --replicas=0
+```
+
+wait for the *Pod* to terminate, then
+
+```shell
+kubectl scale deployment varnish --replicas=1
 ```
 
 ## Accessing the service from outside the Kubernetes cluster
