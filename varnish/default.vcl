@@ -1,12 +1,42 @@
 vcl 4.0;
 
+import directors;   # load the directors
+
 # the first backend found will also be the "default" one
 backend api-catalog {
     .host = "<your IP addr or kubernetes srv name>";
     .port = "6070";
+    .probe = {
+        .url = "/api/flights/catalog/health";
+        .timeout = 1s;
+        .interval = 5s;
+        .window = 5;
+        .threshold = 3;
+    }
+}
+
+backend api-catalog2 {
+    .host = "<other IP addr>";
+    .port = "6070";
+    .probe = {
+        .url = "/api/flights/catalog/health";
+        .timeout = 1s;
+        .interval = 5s;
+        .window = 5;
+        .threshold = 3;
+    }
+}
+
+sub vcl_init {
+    new vdir = directors.round_robin();
+    vdir.add_backend(api-catalog);
+    vdir.add_backend(api-catalog2);
 }
 
 sub vcl_recv {
+    # send all traffic to the vdir director:
+    set req.backend_hint = vdir.backend();
+
     # happens before we check if we have this in cache already
 
     if (req.url ~ "^/api/flights/catalog/city/.*$" && req.method == "GET") {
