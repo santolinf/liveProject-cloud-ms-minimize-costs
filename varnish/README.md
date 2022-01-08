@@ -69,7 +69,8 @@ kubectl get service
     varnish-np             NodePort    10.152.183.220   <none>        6078:31723/TCP    17m
     varnish                ClusterIP   10.152.183.38    <none>        6078/TCP          14m
 
-The second last entry reveals the external port number (**31723**) for our Varnish service:
+The second last entry reveals the external port number (**31723**) for our Varnish service
+(*in your case the port numbers may be different*):
 
     varnish-np             NodePort    10.152.183.220   <none>        6078:31723/TCP    17m
 
@@ -94,7 +95,7 @@ kubectl get pod
     camel-k-operator-69c96b94ff-lzcbx   1/1     Running   13         138d
     varnish-8b64cb947-zcl87             1/1     Running   0          32m
 
-In this case the Pod name is `varnish-8b64cb947-zcl87`.
+In this case the Pod name is `varnish-8b64cb947-zcl87` (*in your case the pod name may be different*).
 
 
 The following command displays a continuously updated list of the most frequently requested URLs:

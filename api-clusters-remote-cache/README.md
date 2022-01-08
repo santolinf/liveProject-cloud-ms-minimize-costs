@@ -34,7 +34,8 @@ kubectl get service
     varnish                     ClusterIP   10.152.183.38    <none>        6078/TCP          17h
     api-clusters-remote-cache   NodePort    10.152.183.155   <none>        6079:32565/TCP    12h
 
-The last entry reveals the external port number (**32565**) for our Redis service:
+The last entry reveals the external port number (**32565**) for our Redis service
+(*in your case the port numbers may be different*):
 
     api-clusters-remote-cache   NodePort    10.152.183.155   <none>        6079:32565/TCP    12h
 
@@ -51,7 +52,7 @@ Install (globally) the Node.js version of redis-cli:
 
 		npm install -g redis-cli
 
-Then you can run it with the command:
+Then, for example, you can run it with the command:
 
 		rdcli -h your.redis.host -a yourredispassword -p 11111
 
