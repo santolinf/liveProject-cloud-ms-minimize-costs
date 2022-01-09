@@ -68,3 +68,11 @@ Shown below is an example GET request for the Clusters microservice.
 
     curl -i -H 'Accept-Encoding: gzip' -w '\n\nResponse Size (bytes): %{size_download} + %{size_header}\n' 'http://localhost:4070/api/flights/clusters/itineraries?from=BUE,MIA&to=MIA,BUE&departure=2022-01-21,2022-01-30&adults=1&children=1&infants=1&amount=10'
 
+## <a id="prevent-duplicate-milestone1"></a> Prevent Duplicates Part
+
+### Milestone 1 - Clusters search result
+
+[API Clusters Search result one](./duplicate.result/api-clusters-search-one.json)
+
+[API Clusters Search result two](./duplicate.result/api-clusters-search-two.json)
+
