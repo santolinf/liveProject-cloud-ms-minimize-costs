@@ -30,6 +30,12 @@ chaos:
       latencyRangeStart: 10
       latencyRangeEnd: 5000
 
+zookeeper:
+  host: localhost:2181
+  maxRetries: 2
+  timeBetweenRetries: 100
+  connectionTimeout: 1000 # 1 second
+
 spring:
   profiles:
     active: default
