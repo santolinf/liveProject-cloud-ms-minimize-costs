@@ -30,12 +30,15 @@ public class JsonSerializer {
     }
 
     public <T> T deserialize(byte[] bytes, Class<T> type) {
+        if (bytes == null) {
+            return null;
+        }
+
         try {
             return objectMapper.readValue(CompressionHelper.decompress(bytes), type);
         } catch (IOException e) {
             LOGGER.error("Error deserializing object: {}", e.getMessage());
+            return null;
         }
-
-        return null;
     }
 }
