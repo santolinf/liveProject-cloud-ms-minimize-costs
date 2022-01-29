@@ -23,18 +23,23 @@ public class ClustersService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ClustersService.class);
 
+    private static final String BARRIER_PATH = "/barriers/search";
+
     private final ItinerariesSearchService itinerariesSearchService;
     private final PricingService pricingService;
     private final ClustersRepository repository;
     private final FlightIdGeneratorHelper flightIdGeneratorHelper;
+    private final ZooKeeperService zooKeeperService;
 
     @Autowired
     public ClustersService(ItinerariesSearchService itinerariesSearchService, PricingService pricingService,
-            ClustersRepository repository, FlightIdGeneratorHelper flightIdGeneratorHelper) {
+            ClustersRepository repository, FlightIdGeneratorHelper flightIdGeneratorHelper,
+            ZooKeeperService zooKeeperService) {
         this.itinerariesSearchService = itinerariesSearchService;
         this.pricingService = pricingService;
         this.repository = repository;
         this.flightIdGeneratorHelper = flightIdGeneratorHelper;
+        this.zooKeeperService = zooKeeperService;
     }
 
     public ClusterSearchDTO availability(ClustersAvailabilityRequestDTO request) {
@@ -45,15 +50,33 @@ public class ClustersService {
         if (StringUtils.isEmpty(request.getId())) { // New search
             response = repository.get(flightIdGeneratorHelper.generate(request));
             if (response == null) {
-                response = availabilityFromProviders(request);
+                response = availabilityFromBarrierOrProvider(request);
             }
             // Limit the size
-            response.setItineraries(response.getItineraries().stream().limit(request.getAmount()).collect(Collectors.toList()));
+            response.setItineraries(
+                    response.getItineraries().stream().limit(request.getAmount()).collect(Collectors.toList()));
         } else { // Pagination old search
             response = availabilityFromDatabase(request);
         }
 
         return response;
+    }
+
+    private ClusterSearchDTO availabilityFromBarrierOrProvider(ClustersAvailabilityRequestDTO request) {
+        String barrierName = buildBarrierPath(request);
+
+        if (!isBarrierCreated(barrierName)) {
+            return availabilityFromProviders(request);
+        }
+
+        zooKeeperService.waitOnBarrier(barrierName);
+
+        ClusterSearchDTO result = repository.get(flightIdGeneratorHelper.generate(request));
+        if (result == null) {
+            return availabilityFromProviders(request);
+        }
+
+        return repository.get(flightIdGeneratorHelper.generate(request));
     }
 
     private ClusterSearchDTO availabilityFromProviders(ClustersAvailabilityRequestDTO request) {
@@ -92,4 +115,15 @@ public class ClustersService {
         return response;
     }
 
+    private String buildBarrierPath(ClustersAvailabilityRequestDTO request) {
+        return BARRIER_PATH + "/" + flightIdGeneratorHelper.generate(request);
+    }
+
+    private synchronized boolean isBarrierCreated(String barrierPath) {
+        if (!zooKeeperService.checkIfBarrierExists(barrierPath)) {
+            return zooKeeperService.createBarrier(barrierPath);
+        }
+
+        return true;
+    }
 }
