@@ -56,9 +56,10 @@ connector:
       readTimeout: 2000
    pricing:
       host: localhost:5070
-      responseTimeout: 10000
-      connectionTimeout: 10000
-      readTimeout: 10000
+      # raising the timeout slightly
+      responseTimeout: 15000
+      connectionTimeout: 15000
+      readTimeout: 15000
    itineraries-search:
       host: localhost:7070
       responseTimeout: 10000

@@ -13,16 +13,13 @@ public class ZooKeeperConfiguration {
     private String host;
     private int maxRetries;
     private int timeBetweenRetries; // ms
-    private int connectionTimeout;  // ms
+    private int connectionTimeout; // ms
 
     @Bean
     public ZooKeeperCuratorConfiguration zooKeeperConnection() {
-        return new ZooKeeperCuratorConfiguration(CuratorFrameworkFactory.builder()
-                .connectString(host)
-                .retryPolicy(new RetryNTimes(maxRetries, timeBetweenRetries))
-                .connectionTimeoutMs(connectionTimeout)
-                .build()
-        );
+        return new ZooKeeperCuratorConfiguration(CuratorFrameworkFactory.builder().connectString(host)
+                .retryPolicy(new RetryNTimes(maxRetries, timeBetweenRetries)).connectionTimeoutMs(connectionTimeout)
+                .build());
     }
 
     public String getHost() {
