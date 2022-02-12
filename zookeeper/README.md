@@ -1,6 +1,26 @@
 # Deploy Zookeeper to Kubernetes
 
-## Decisions
+You need to analyze which situation needs which type of mechanism because 
+of the complexity of implementation in all the microservices. 
+When the request and the response don’t spend a lot of resources and are quick, a good option is to use a cache. But when the request involves a lot of microservices and the response is not static information, 
+it’s a good idea to implement synchronization using Zookeeper.
+
+The following table summarize the pros/cons of each mechanism:
+
+|                       | Cache                                                       | Using barrier                                                 |
+|-----------------------|-------------------------------------------------------------|---------------------------------------------------------------|
+| Advantages            |                                                             |                                                               |
+| | - Simple to implement                                       | - There are some implementations like Zookeper or Redis Lock  |
+| | - Covers the cases of duplicate request in a different time| - Covers all the cases of duplicate requests at the same time | 
+| | - There are a lot of implementations of cache like Caffeine, Guava, Varnish, Redis.|                                                               |
+| Disadvantages | |                                                               |
+| | - An element to maintain but could be simple depending of the implementation | - A complex element of infrastructure to maintain             |
+| | - Does not cover the cases of duplicate requests at the same moment | - Does not cover the cases of duplicate requests in different moments |
+
+Take into consideration that each solution on its own will not resolve the 
+problem in all cases, so it’s a good idea to implement both mechanisms in 
+combination.
+
 
 ## Part 3 Milestone 2 - Reduce the Number of Duplicate Requests
 

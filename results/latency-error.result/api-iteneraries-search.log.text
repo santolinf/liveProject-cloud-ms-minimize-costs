@@ -1,0 +1,120 @@
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.2)
+
+2022-02-06 14:56:23.713  INFO 13884 --- [           main] c.t.flights.api.itineraries.search.App   : Starting App using Java 11.0.11 on Desktop-PC with PID 13884 (C:\manning-twa-api\api-itineraries-search\target\classes started by user in C:\manning-twa-api)
+2022-02-06 14:56:23.717 DEBUG 13884 --- [           main] c.t.flights.api.itineraries.search.App   : Running with Spring Boot v2.4.2, Spring v5.3.3
+2022-02-06 14:56:23.718  INFO 13884 --- [           main] c.t.flights.api.itineraries.search.App   : The following profiles are active: default
+2022-02-06 14:56:26.455  INFO 13884 --- [           main] org.eclipse.jetty.util.log               : Logging initialized @5127ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-02-06 14:56:26.801  INFO 13884 --- [           main] o.s.b.w.e.j.JettyServletWebServerFactory : Server initialized with port: 7070
+2022-02-06 14:56:26.807  INFO 13884 --- [           main] org.eclipse.jetty.server.Server          : jetty-9.4.35.v20201120; built: 2020-11-20T21:17:03.964Z; git: bdc54f03a5e0a7e280fab27f55c3c75ee8da89fb; jvm 11.0.11+9
+2022-02-06 14:56:26.842  INFO 13884 --- [           main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
+2022-02-06 14:56:26.843  INFO 13884 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3054 ms
+2022-02-06 14:56:27.115  INFO 13884 --- [           main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
+2022-02-06 14:56:27.115  INFO 13884 --- [           main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
+2022-02-06 14:56:27.117  INFO 13884 --- [           main] org.eclipse.jetty.server.session         : node0 Scavenging every 660000ms
+2022-02-06 14:56:27.124  INFO 13884 --- [           main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@348137e8{application,/api/flights/itineraries-search,[file:///C:/Users/user/AppData/Local/Temp/jetty-docbase.7070.1670418960936724472/, jar:file:/C:/Users/user/.m2/repository/org/webjars/swagger-ui/3.47.1/swagger-ui-3.47.1.jar!/META-INF/resources],AVAILABLE}
+2022-02-06 14:56:27.124  INFO 13884 --- [           main] org.eclipse.jetty.server.Server          : Started @5798ms
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by ma.glasnost.orika.converter.builtin.CloneableConverter (file:/C:/Users/user/.m2/repository/ma/glasnost/orika/orika-core/1.5.4/orika-core-1.5.4.jar) to method java.lang.Object.clone()
+WARNING: Please consider reporting this to the maintainers of ma.glasnost.orika.converter.builtin.CloneableConverter
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2022-02-06 14:56:27.796  INFO 13884 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-06 14:56:29.123  INFO 13884 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 13 endpoint(s) beneath base path ''
+2022-02-06 14:56:29.185  INFO 13884 --- [           main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-06 14:56:29.185  INFO 13884 --- [           main] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-06 14:56:29.188  INFO 13884 --- [           main] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-02-06 14:56:29.226  INFO 13884 --- [           main] o.e.jetty.server.AbstractConnector       : Started ServerConnector@3c6c4689{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2022-02-06 14:56:29.226  INFO 13884 --- [           main] o.s.b.web.embedded.jetty.JettyWebServer  : Jetty started on port(s) 7070 (http/1.1) with context path '/api/flights/itineraries-search'
+2022-02-06 14:56:29.272  INFO 13884 --- [           main] c.t.flights.api.itineraries.search.App   : Started App in 6.289 seconds (JVM running for 7.945)
+2022-02-06 15:20:51.351 DEBUG 13884 --- [tp1790831630-33] .t.f.a.i.s.c.ItinerariesSearchController : Obtain all the itineraries without price
+2022-02-06 15:20:51.352 DEBUG 13884 --- [tp1790831630-33] c.t.f.a.i.s.s.ItinerariesSearchService   : Obtain the information about the flights
+2022-02-06 15:20:51.355 DEBUG 13884 --- [pool-1-thread-2] c.t.f.a.i.s.facade.ProviderBetaFacade    : Obtain the information about the flights
+2022-02-06 15:20:51.355 DEBUG 13884 --- [pool-1-thread-1] c.t.f.a.i.s.facade.ProviderAlphaFacade   : Obtain the information about the flights
+2022-02-06 15:20:51.617 DEBUG 13884 --- [pool-1-thread-1] c.t.f.a.i.s.c.filter.ConnectorFilter     : @@ ------------ Request -----------
+2022-02-06 15:20:51.618 DEBUG 13884 --- [pool-1-thread-1] c.t.f.a.i.s.c.filter.ConnectorFilter     : GET localhost:8070/api/flights/provider/alpha/itineraries?adults=1&children=1&infants=1&amount=10&departure=2022-02-28,2022-03-12&from=BUE,MIA&to=MIA,BUE
+2022-02-06 15:20:51.618 DEBUG 13884 --- [pool-1-thread-2] c.t.f.a.i.s.c.filter.ConnectorFilter     : @@ ------------ Request -----------
+2022-02-06 15:20:51.618 DEBUG 13884 --- [pool-1-thread-2] c.t.f.a.i.s.c.filter.ConnectorFilter     : GET localhost:9070/api/flights/provider/beta/itineraries?adults=1&children=1&infants=1&amount=10&departure=2022-02-28,2022-03-12&from=BUE,MIA&to=MIA,BUE
+2022-02-06 15:20:51.619 DEBUG 13884 --- [pool-1-thread-1] c.t.f.a.i.s.c.filter.ConnectorFilter     : Content-Type=application/json
+2022-02-06 15:20:51.619 DEBUG 13884 --- [pool-1-thread-2] c.t.f.a.i.s.c.filter.ConnectorFilter     : Content-Type=application/json
+2022-02-06 15:20:51.619 DEBUG 13884 --- [pool-1-thread-1] c.t.f.a.i.s.c.filter.ConnectorFilter     : Accept-Encoding=gzip
+2022-02-06 15:20:51.619 DEBUG 13884 --- [pool-1-thread-2] c.t.f.a.i.s.c.filter.ConnectorFilter     : Accept-Encoding=gzip
+2022-02-06 15:20:53.972 DEBUG 13884 --- [ctor-http-nio-6] c.t.f.a.i.s.c.filter.ConnectorFilter     : @@ ------------ Response ----------
+2022-02-06 15:20:53.972 DEBUG 13884 --- [ctor-http-nio-6] c.t.f.a.i.s.c.filter.ConnectorFilter     : Status code: 200 (OK)
+2022-02-06 15:20:53.977 DEBUG 13884 --- [ctor-http-nio-6] c.t.f.a.i.s.c.filter.ConnectorFilter     : Date=Sun, 06 Feb 2022 15:20:53 GMT
+2022-02-06 15:20:53.977 DEBUG 13884 --- [ctor-http-nio-6] c.t.f.a.i.s.c.filter.ConnectorFilter     : Content-Type=application/json
+2022-02-06 15:20:53.978 DEBUG 13884 --- [ctor-http-nio-6] c.t.f.a.i.s.c.filter.ConnectorFilter     : Vary=Accept-Encoding, User-Agent
+2022-02-06 15:20:53.978 DEBUG 13884 --- [ctor-http-nio-6] c.t.f.a.i.s.c.filter.ConnectorFilter     : Transfer-Encoding=chunked
+2022-02-06 15:20:58.141  WARN 13884 --- [ctor-http-nio-8] r.netty.http.client.HttpClientConnect    : [id: 0x56593718, L:/127.0.0.1:55929 - R:localhost/127.0.0.1:8070] The connection observed an error
+
+io.netty.handler.timeout.ReadTimeoutException: null
+
+2022-02-06 15:20:58.180 ERROR 13884 --- [pool-1-thread-1] c.t.f.a.i.s.s.ItinerariesSearchService   : nested exception is io.netty.handler.timeout.ReadTimeoutException
+
+org.springframework.web.reactive.function.client.WebClientRequestException: nested exception is io.netty.handler.timeout.ReadTimeoutException
+	at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:137) ~[spring-webflux-5.3.3.jar:5.3.3]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException:
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ Request to GET localhost:8070/api/flights/provider/alpha/itineraries?adults=1&children=1&infants=1&amount=10&departure=2022-02-28,2022-03-12&from=BUE,MIA&to=MIA,BUE [DefaultWebClient]
+Stack trace:
+		at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:137) ~[spring-webflux-5.3.3.jar:5.3.3]
+		at reactor.core.publisher.MonoErrorSupplied.subscribe(MonoErrorSupplied.java:70) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4046) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:221) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:221) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:221) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:93) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.MonoFlatMapMany$FlatMapManyMain.onError(MonoFlatMapMany.java:204) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.SerializedSubscriber.onError(SerializedSubscriber.java:124) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.whenError(FluxRetryWhen.java:224) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenOtherSubscriber.onError(FluxRetryWhen.java:273) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.drain(FluxConcatMap.java:413) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onNext(FluxConcatMap.java:250) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.EmitterProcessor.drain(EmitterProcessor.java:491) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.EmitterProcessor.tryEmitNext(EmitterProcessor.java:299) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.SinkManySerialized.tryEmitNext(SinkManySerialized.java:97) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.InternalManySink.emitNext(InternalManySink.java:27) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.onError(FluxRetryWhen.java:189) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.netty.http.client.HttpClientConnect$HttpObserver.onUncaughtException(HttpClientConnect.java:359) ~[reactor-netty-http-1.0.3.jar:1.0.3]
+		at reactor.netty.ReactorNetty$CompositeConnectionObserver.onUncaughtException(ReactorNetty.java:631) ~[reactor-netty-core-1.0.3.jar:1.0.3]
+		at reactor.netty.resources.DefaultPooledConnectionProvider$DisposableAcquire.onUncaughtException(DefaultPooledConnectionProvider.java:213) ~[reactor-netty-core-1.0.3.jar:1.0.3]
+		at reactor.netty.resources.DefaultPooledConnectionProvider$PooledConnection.onUncaughtException(DefaultPooledConnectionProvider.java:476) ~[reactor-netty-core-1.0.3.jar:1.0.3]
+		at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:230) ~[reactor-netty-core-1.0.3.jar:1.0.3]
+		at reactor.netty.channel.FluxReceive.onInboundError(FluxReceive.java:442) ~[reactor-netty-core-1.0.3.jar:1.0.3]
+		at reactor.netty.channel.ChannelOperations.onInboundError(ChannelOperations.java:467) ~[reactor-netty-core-1.0.3.jar:1.0.3]
+		at reactor.netty.channel.ChannelOperationsHandler.exceptionCaught(ChannelOperationsHandler.java:127) ~[reactor-netty-core-1.0.3.jar:1.0.3]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:302) ~[netty-transport-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:281) ~[netty-transport-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireExceptionCaught(AbstractChannelHandlerContext.java:273) ~[netty-transport-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.handler.timeout.ReadTimeoutHandler.readTimedOut(ReadTimeoutHandler.java:98) ~[netty-handler-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.handler.timeout.ReadTimeoutHandler.channelIdle(ReadTimeoutHandler.java:90) ~[netty-handler-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:504) ~[netty-handler-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.handler.timeout.IdleStateHandler$AbstractIdleTask.run(IdleStateHandler.java:476) ~[netty-handler-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.util.concurrent.PromiseTask.runTask(PromiseTask.java:98) ~[netty-common-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:170) ~[netty-common-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.58.Final.jar:4.1.58.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.58.Final.jar:4.1.58.Final]
+		at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.4.2.jar:3.4.2]
+		at reactor.core.publisher.Mono.block(Mono.java:1703) ~[reactor-core-3.4.2.jar:3.4.2]
+		at com.twa.flights.api.itineraries.search.connector.ProviderAlphaConnector.availability(ProviderAlphaConnector.java:67) ~[classes/:na]
+		at com.twa.flights.api.itineraries.search.facade.ProviderAlphaFacade.availability(ProviderAlphaFacade.java:29) ~[classes/:na]
+		at com.twa.flights.api.itineraries.search.service.ItinerariesSearchService.lambda$makeProviderCalls$0(ItinerariesSearchService.java:60) ~[classes/:na]
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+		at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+Caused by: io.netty.handler.timeout.ReadTimeoutException: null
+
