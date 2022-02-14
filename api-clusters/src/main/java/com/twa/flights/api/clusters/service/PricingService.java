@@ -1,9 +1,14 @@
 package com.twa.flights.api.clusters.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.twa.flights.api.clusters.dto.UpdatedPaxPriceDTO;
+import com.twa.flights.common.dto.itinerary.MarkupDTO;
+import com.twa.flights.common.dto.itinerary.PaxPriceDTO;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +31,7 @@ public class PricingService {
         this.pricingConnector = pricingConnector;
     }
 
+    @CircuitBreaker(name = "price-itineraries", fallbackMethod = "fallbackPriceItineraries")
     public List<ItineraryDTO> priceItineraries(List<ItineraryDTO> itineraries) {
         LOGGER.debug("Pricing itineraries");
 
@@ -58,5 +64,29 @@ public class PricingService {
             priceInfo.getInfants().setMarkup(updatedPriceInfo.getInfants().getMarkup());
             priceInfo.getInfants().setTotal(updatedPriceInfo.getInfants().getTotal());
         }
+    }
+
+    private List<ItineraryDTO> fallbackPriceItineraries(List<ItineraryDTO> itineraries, RuntimeException ex) {
+        LOGGER.debug("Fallback pricing itineraries");
+
+        for (ItineraryDTO itinerary : itineraries) {
+            UpdatedPriceInfoDTO updatedPriceInfo = new UpdatedPriceInfoDTO();
+            updatedPriceInfo.setItineraryId(itinerary.getId());
+            updatedPriceInfo.setAdults(createFallbackMarkup(itinerary.getPriceInfo().getAdults()));
+            updatedPriceInfo.setChildren(createFallbackMarkup(itinerary.getPriceInfo().getChildren()));
+            updatedPriceInfo.setInfants(createFallbackMarkup(itinerary.getPriceInfo().getInfants()));
+
+            updatePriceInfo(updatedPriceInfo, itinerary);
+        }
+
+        return itineraries;
+    }
+
+    private UpdatedPaxPriceDTO createFallbackMarkup(PaxPriceDTO basePrice) {
+        UpdatedPaxPriceDTO updatedPaxPrice = new UpdatedPaxPriceDTO();
+        updatedPaxPrice.setMarkup(new MarkupDTO(BigDecimal.ZERO, BigDecimal.ZERO));
+        updatedPaxPrice.setTotal(basePrice.getTotal());
+
+        return updatedPaxPrice;
     }
 }

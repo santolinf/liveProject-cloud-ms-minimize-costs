@@ -25,10 +25,10 @@ chaos:
     watcher:
       restController: true
     assaults:
-      exceptionsActive: false
+      exceptionsActive: true
       latencyActive: true
-      latencyRangeStart: 5000
-      latencyRangeEnd: 10000
+      latencyRangeStart: 10
+      latencyRangeEnd: 5000
 
 spring:
   profiles:

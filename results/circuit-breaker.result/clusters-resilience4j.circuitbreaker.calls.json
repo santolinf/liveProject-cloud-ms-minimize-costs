@@ -1,0 +1,35 @@
+{
+  "name": "resilience4j.circuitbreaker.calls",
+  "description": "Total number of calls which failed but the exception was ignored",
+  "baseUnit": "seconds",
+  "measurements": [
+    {
+      "statistic": "COUNT",
+      "value": 5.0
+    },
+    {
+      "statistic": "TOTAL_TIME",
+      "value": 4.2626827
+    },
+    {
+      "statistic": "MAX",
+      "value": 0.0151263
+    }
+  ],
+  "availableTags": [
+    {
+      "tag": "kind",
+      "values": [
+        "ignored",
+        "successful",
+        "failed"
+      ]
+    },
+    {
+      "tag": "name",
+      "values": [
+        "price-itineraries"
+      ]
+    }
+  ]
+}

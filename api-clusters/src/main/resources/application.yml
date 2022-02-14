@@ -48,6 +48,22 @@ spring:
     host: localhost
     port: 6079
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      price-itineraries:
+        registerHealthIndicator: true
+        ringBufferSizeInClosedState: 5
+        ringBufferSizeInHalfOpenState: 3
+        waitDurationInOpenState: 10000
+        failureRateThreshold: 50
+        recordExceptions:
+          - java.lang.RuntimeException
+          - java.lang.InterruptedException
+          - io.netty.handler.timeout.ReadTimeoutException
+          - org.springframework.web.reactive.function.client.WebClientRequestException
+          - com.twa.flights.api.clusters.exception.TWAException
+
 connector:
    catalog:
       host: localhost:6070
@@ -56,10 +72,9 @@ connector:
       readTimeout: 2000
    pricing:
       host: localhost:5070
-      # raising the timeout slightly
-      responseTimeout: 15000
-      connectionTimeout: 15000
-      readTimeout: 15000
+      responseTimeout: 10000
+      connectionTimeout: 10000
+      readTimeout: 10000
    itineraries-search:
       host: localhost:7070
       responseTimeout: 10000
