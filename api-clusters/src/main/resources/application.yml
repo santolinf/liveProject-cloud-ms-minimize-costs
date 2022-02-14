@@ -48,21 +48,23 @@ spring:
     host: localhost
     port: 6079
 
-resilience4j:
-  circuitbreaker:
-    instances:
-      price-itineraries:
-        registerHealthIndicator: true
-        ringBufferSizeInClosedState: 5
-        ringBufferSizeInHalfOpenState: 3
-        waitDurationInOpenState: 10000
-        failureRateThreshold: 50
-        recordExceptions:
-          - java.lang.RuntimeException
-          - java.lang.InterruptedException
-          - io.netty.handler.timeout.ReadTimeoutException
-          - org.springframework.web.reactive.function.client.WebClientRequestException
-          - com.twa.flights.api.clusters.exception.TWAException
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      ringBufferSizeInClosedState: 5
+      ringBufferSizeInHalfOpenState: 3
+      waitDurationInOpenState: 10000
+      failureRateThreshold: 50
+      recordExceptions:
+        - java.lang.RuntimeException
+        - java.lang.InterruptedException
+        - io.netty.handler.timeout.ReadTimeoutException
+        - org.springframework.web.reactive.function.client.WebClientRequestException
+        - com.twa.flights.api.clusters.exception.TWAException
+  backends:
+    pricing:
+      baseConfig: default
 
 connector:
    catalog:

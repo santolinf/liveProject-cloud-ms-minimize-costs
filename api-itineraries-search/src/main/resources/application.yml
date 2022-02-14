@@ -34,33 +34,25 @@ spring:
   profiles:
     active: default
 
-resilience4j:
-  circuitbreaker:
-    instances:
-      provider-alpha:
-        registerHealthIndicator: true
-        ringBufferSizeInClosedState: 5
-        ringBufferSizeInHalfOpenState: 3
-        waitDurationInOpenState: 10000
-        failureRateThreshold: 50
-        recordExceptions:
-          - java.lang.RuntimeException
-          - java.lang.InterruptedException
-          - io.netty.handler.timeout.ReadTimeoutException
-          - org.springframework.web.reactive.function.client.WebClientRequestException
-          - com.twa.flights.api.itineraries.search.exception.TWAException
-      provider-beta:
-        registerHealthIndicator: true
-        ringBufferSizeInClosedState: 5
-        ringBufferSizeInHalfOpenState: 3
-        waitDurationInOpenState: 10000
-        failureRateThreshold: 50
-        recordExceptions:
-          - java.lang.RuntimeException
-          - java.lang.InterruptedException
-          - io.netty.handler.timeout.ReadTimeoutException
-          - org.springframework.web.reactive.function.client.WebClientRequestException
-          - com.twa.flights.api.itineraries.search.exception.TWAException
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      ringBufferSizeInClosedState: 5
+      ringBufferSizeInHalfOpenState: 3
+      waitDurationInOpenState: 10000
+      failureRateThreshold: 50
+      recordExceptions:
+        - java.lang.RuntimeException
+        - java.lang.InterruptedException
+        - io.netty.handler.timeout.ReadTimeoutException
+        - org.springframework.web.reactive.function.client.WebClientRequestException
+        - com.twa.flights.api.itineraries.search.exception.TWAException
+  backends:
+    provider-alpha:
+      baseConfig: default
+    provider-beta:
+      baseConfig: default
 
 connector:
    provider-alpha:
