@@ -28,7 +28,7 @@ public class ProviderAlphaFacade implements ProviderFacade {
     }
 
     @CircuitBreaker(name = "provider-alpha")
-    @RateLimiter(name = "availability-provider-alpha", fallbackMethod = "fallbackEmptyItineraries")
+    @RateLimiter(name = "provider-alpha", fallbackMethod = "fallbackAvailability")
     public List<ItineraryDTO> availability(AvailabilityRequestDTO request) {
         LOGGER.debug("Obtain the information about the flights");
         return itinerariesSearchConnector.availability(request);
@@ -40,7 +40,7 @@ public class ProviderAlphaFacade implements ProviderFacade {
     }
 
     @SuppressWarnings("unused")
-    private List<ItineraryDTO> fallbackEmptyItineraries(AvailabilityRequestDTO request, Throwable ex) {
+    private List<ItineraryDTO> fallbackAvailability(AvailabilityRequestDTO request, Throwable ex) {
         return Collections.emptyList();
     }
 }

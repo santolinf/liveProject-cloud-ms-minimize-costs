@@ -62,7 +62,7 @@ resilience4j.ratelimiter:
       limitRefreshPeriod: 15s
       limitForPeriod: 2
   instances:
-    availability-provider-alpha:
+    provider-alpha:
       baseConfig: default
 
 connector:

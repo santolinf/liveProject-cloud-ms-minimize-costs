@@ -31,7 +31,7 @@ public class ClustersController implements ClustersResources {
         this.requestValidator = requestValidator;
     }
 
-    @RateLimiter(name = "availability", fallbackMethod = "tooManyRequests")
+    @RateLimiter(name = "clusters", fallbackMethod = "fallbackAvailability")
     @Override
     public ResponseEntity<ClusterSearchDTO> availability(ClustersAvailabilityRequestDTO request) {
         LOGGER.debug("Obtain all the itineraries with price");
@@ -42,7 +42,7 @@ public class ClustersController implements ClustersResources {
     }
 
     @SuppressWarnings("unused")
-    private ResponseEntity<Void> tooManyRequests(ClustersAvailabilityRequestDTO request, Throwable ex) {
-        return new ResponseEntity<>(HttpStatus.TOO_MANY_REQUESTS);
+    private ResponseEntity<ClusterSearchDTO> fallbackAvailability(ClustersAvailabilityRequestDTO request, Throwable ex) {
+        return new ResponseEntity<>(new ClusterSearchDTO(), HttpStatus.TOO_MANY_REQUESTS);
     }
 }

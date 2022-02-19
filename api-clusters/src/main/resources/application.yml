@@ -76,7 +76,7 @@ resilience4j.ratelimiter:
       limitRefreshPeriod: 10s # period of time in secs for a limit to apply before refresh
       limitForPeriod: 2 # number of permissions during limit refresh period
   instances:
-    availability:
+    clusters:
       baseConfig: default
 
 connector:
