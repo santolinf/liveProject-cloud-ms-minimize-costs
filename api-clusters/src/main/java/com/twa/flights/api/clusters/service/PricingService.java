@@ -31,7 +31,7 @@ public class PricingService {
         this.pricingConnector = pricingConnector;
     }
 
-    @CircuitBreaker(name = "price-itineraries", fallbackMethod = "fallbackPriceItineraries")
+    @CircuitBreaker(name = "pricing", fallbackMethod = "fallbackPriceItineraries")
     public List<ItineraryDTO> priceItineraries(List<ItineraryDTO> itineraries) {
         LOGGER.debug("Pricing itineraries");
 
@@ -66,6 +66,7 @@ public class PricingService {
         }
     }
 
+    @SuppressWarnings("unused")
     private List<ItineraryDTO> fallbackPriceItineraries(List<ItineraryDTO> itineraries, RuntimeException ex) {
         LOGGER.debug("Fallback pricing itineraries");
 

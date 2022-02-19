@@ -1,0 +1,90 @@
+{
+  "circuitBreakerEvents": [
+    {
+      "circuitBreakerName": "provider-beta",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:17:41.592914400Z[Europe/London]",
+      "durationInMs": 2572
+    },
+    {
+      "circuitBreakerName": "provider-alpha",
+      "type": "ERROR",
+      "creationTime": "2022-02-14T16:17:45.592581400Z[Europe/London]",
+      "errorMessage": "org.springframework.web.reactive.function.client.WebClientRequestException: nested exception is io.netty.handler.timeout.ReadTimeoutException",
+      "durationInMs": 6571
+    },
+    {
+      "circuitBreakerName": "provider-beta",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:17:47.796276400Z[Europe/London]",
+      "durationInMs": 296
+    },
+    {
+      "circuitBreakerName": "provider-alpha",
+      "type": "ERROR",
+      "creationTime": "2022-02-14T16:17:52.507615500Z[Europe/London]",
+      "errorMessage": "org.springframework.web.reactive.function.client.WebClientRequestException: nested exception is io.netty.handler.timeout.ReadTimeoutException",
+      "durationInMs": 5007
+    },
+    {
+      "circuitBreakerName": "provider-alpha",
+      "type": "ERROR",
+      "creationTime": "2022-02-14T16:17:53.421225800Z[Europe/London]",
+      "errorMessage": "com.twa.flights.api.itineraries.search.exception.TWAException: Error while calling catalog endpoint",
+      "durationInMs": 45
+    },
+    {
+      "circuitBreakerName": "provider-beta",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:17:53.650382700Z[Europe/London]",
+      "durationInMs": 275
+    },
+    {
+      "circuitBreakerName": "provider-beta",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:17:56.257674800Z[Europe/London]",
+      "durationInMs": 252
+    },
+    {
+      "circuitBreakerName": "provider-alpha",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:17:59.774609Z[Europe/London]",
+      "durationInMs": 3769
+    },
+    {
+      "circuitBreakerName": "provider-alpha",
+      "type": "ERROR",
+      "creationTime": "2022-02-14T16:18:02.053807900Z[Europe/London]",
+      "errorMessage": "com.twa.flights.api.itineraries.search.exception.TWAException: Error while calling catalog endpoint",
+      "durationInMs": 10
+    },
+    {
+      "circuitBreakerName": "provider-alpha",
+      "type": "FAILURE_RATE_EXCEEDED",
+      "creationTime": "2022-02-14T16:18:02.053807900Z[Europe/London]"
+    },
+    {
+      "circuitBreakerName": "provider-alpha",
+      "type": "STATE_TRANSITION",
+      "creationTime": "2022-02-14T16:18:02.057797500Z[Europe/London]",
+      "stateTransition": "CLOSED_TO_OPEN"
+    },
+    {
+      "circuitBreakerName": "provider-beta",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:18:02.285140600Z[Europe/London]",
+      "durationInMs": 241
+    },
+    {
+      "circuitBreakerName": "provider-alpha",
+      "type": "NOT_PERMITTED",
+      "creationTime": "2022-02-14T16:18:03.899655400Z[Europe/London]"
+    },
+    {
+      "circuitBreakerName": "provider-beta",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:18:04.137714400Z[Europe/London]",
+      "durationInMs": 237
+    }
+  ]
+}

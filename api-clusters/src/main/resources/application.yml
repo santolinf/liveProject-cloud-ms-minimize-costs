@@ -1,5 +1,7 @@
 management:
   health.db.enabled: false
+  health.circuitbreakers.enabled: true
+  health.ratelimiters.enabled: true
   endpoints:
     web:
       base-path: /
@@ -48,21 +50,34 @@ spring:
     host: localhost
     port: 6079
 
-resilience4j:
-  circuitbreaker:
-    instances:
-      price-itineraries:
-        registerHealthIndicator: true
-        ringBufferSizeInClosedState: 5
-        ringBufferSizeInHalfOpenState: 3
-        waitDurationInOpenState: 10000
-        failureRateThreshold: 50
-        recordExceptions:
-          - java.lang.RuntimeException
-          - java.lang.InterruptedException
-          - io.netty.handler.timeout.ReadTimeoutException
-          - org.springframework.web.reactive.function.client.WebClientRequestException
-          - com.twa.flights.api.clusters.exception.TWAException
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      ringBufferSizeInClosedState: 5
+      ringBufferSizeInHalfOpenState: 3
+      waitDurationInOpenState: 10000
+      failureRateThreshold: 50
+      recordExceptions:
+        - java.lang.RuntimeException
+        - java.lang.InterruptedException
+        - io.netty.handler.timeout.ReadTimeoutException
+        - org.springframework.web.reactive.function.client.WebClientRequestException
+        - com.twa.flights.api.clusters.exception.TWAException
+  backends:
+    pricing:
+      baseConfig: default
+
+resilience4j.ratelimiter:
+  configs:
+    default:
+      registerHealthIndicator: true
+      timeoutDuration: 1000ms  # time in secs a thread waits for a permission
+      limitRefreshPeriod: 10s # period of time in secs for a limit to apply before refresh
+      limitForPeriod: 2 # number of permissions during limit refresh period
+  instances:
+    availability:
+      baseConfig: default
 
 connector:
    catalog:

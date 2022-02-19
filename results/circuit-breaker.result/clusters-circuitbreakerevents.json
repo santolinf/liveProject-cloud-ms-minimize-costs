@@ -1,0 +1,54 @@
+{
+  "circuitBreakerEvents": [
+    {
+      "circuitBreakerName": "pricing",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:17:46.368189700Z[Europe/London]",
+      "durationInMs": 693
+    },
+    {
+      "circuitBreakerName": "pricing",
+      "type": "ERROR",
+      "creationTime": "2022-02-14T16:17:52.558011Z[Europe/London]",
+      "errorMessage": "com.twa.flights.api.clusters.exception.TWAException: Error while calling pricing endpoint",
+      "durationInMs": 40
+    },
+    {
+      "circuitBreakerName": "pricing",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:17:54.804982600Z[Europe/London]",
+      "durationInMs": 1145
+    },
+    {
+      "circuitBreakerName": "pricing",
+      "type": "SUCCESS",
+      "creationTime": "2022-02-14T16:18:01.205653Z[Europe/London]",
+      "durationInMs": 1424
+    },
+    {
+      "circuitBreakerName": "pricing",
+      "type": "ERROR",
+      "creationTime": "2022-02-14T16:18:02.298993400Z[Europe/London]",
+      "errorMessage": "com.twa.flights.api.clusters.exception.TWAException: Error while calling pricing endpoint",
+      "durationInMs": 9
+    },
+    {
+      "circuitBreakerName": "pricing",
+      "type": "ERROR",
+      "creationTime": "2022-02-14T16:18:04.155844600Z[Europe/London]",
+      "errorMessage": "com.twa.flights.api.clusters.exception.TWAException: Error while calling pricing endpoint",
+      "durationInMs": 14
+    },
+    {
+      "circuitBreakerName": "pricing",
+      "type": "FAILURE_RATE_EXCEEDED",
+      "creationTime": "2022-02-14T16:18:04.155844600Z[Europe/London]"
+    },
+    {
+      "circuitBreakerName": "pricing",
+      "type": "STATE_TRANSITION",
+      "creationTime": "2022-02-14T16:18:04.157842200Z[Europe/London]",
+      "stateTransition": "CLOSED_TO_OPEN"
+    }
+  ]
+}
