@@ -1,5 +1,6 @@
 package com.twa.flights.api.clusters.controller;
 
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class ClustersController implements ClustersResources {
         this.requestValidator = requestValidator;
     }
 
+    @RateLimiter(name = "availability", fallbackMethod = "tooManyRequests")
     @Override
     public ResponseEntity<ClusterSearchDTO> availability(ClustersAvailabilityRequestDTO request) {
         LOGGER.debug("Obtain all the itineraries with price");
@@ -39,4 +41,8 @@ public class ClustersController implements ClustersResources {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @SuppressWarnings("unused")
+    private ResponseEntity<Void> tooManyRequests(ClustersAvailabilityRequestDTO request, Throwable ex) {
+        return new ResponseEntity<>(HttpStatus.TOO_MANY_REQUESTS);
+    }
 }

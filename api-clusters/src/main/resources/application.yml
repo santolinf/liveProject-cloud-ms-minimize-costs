@@ -1,5 +1,7 @@
 management:
   health.db.enabled: false
+  health.circuitbreakers.enabled: true
+  health.ratelimiters.enabled: true
   endpoints:
     web:
       base-path: /
@@ -64,6 +66,17 @@ resilience4j.circuitbreaker:
         - com.twa.flights.api.clusters.exception.TWAException
   backends:
     pricing:
+      baseConfig: default
+
+resilience4j.ratelimiter:
+  configs:
+    default:
+      registerHealthIndicator: true
+      timeoutDuration: 1000ms  # time in secs a thread waits for a permission
+      limitRefreshPeriod: 10s # period of time in secs for a limit to apply before refresh
+      limitForPeriod: 2 # number of permissions during limit refresh period
+  instances:
+    availability:
       baseConfig: default
 
 connector:

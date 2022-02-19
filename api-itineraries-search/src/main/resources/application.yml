@@ -54,6 +54,17 @@ resilience4j.circuitbreaker:
     provider-beta:
       baseConfig: default
 
+resilience4j.ratelimiter:
+  configs:
+    default:
+      registerHealthIndicator: true
+      timeoutDuration: 1000ms
+      limitRefreshPeriod: 15s
+      limitForPeriod: 2
+  instances:
+    availability-provider-alpha:
+      baseConfig: default
+
 connector:
    provider-alpha:
       host: localhost:8070
