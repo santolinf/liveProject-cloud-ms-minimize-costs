@@ -48,9 +48,10 @@ public class ClustersService {
         ClusterSearchDTO response = null;
 
         if (StringUtils.isEmpty(request.getId())) { // New search
-            response = repository.get(flightIdGeneratorHelper.generate(request));
+//            response = repository.get(flightIdGeneratorHelper.generate(request));
             if (response == null) {
-                response = availabilityFromBarrierOrProvider(request);
+//                response = availabilityFromBarrierOrProvider(request);
+                response = availabilityFromProviders(request);
             }
             // Limit the size
             response.setItineraries(
